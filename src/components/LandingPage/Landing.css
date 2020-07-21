@@ -1,0 +1,62 @@
+section {
+    width: 80vw;
+    margin: auto
+}
+
+input {
+    background: none;
+}
+
+input::placeholder {
+    color: black;
+}
+
+@media only screen and (min-width: 750px) {
+
+
+    section {
+        width: 80vw;
+    }
+    
+    h1 {
+    font-size: 3.5rem; 
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    p, form * {
+        font-size: 1.2rem;
+    }
+
+}
+
+@media only screen and (min-width: 1000px) {
+
+
+    section {
+        width: 80vw;
+    }
+    
+    h1 {
+    font-size: 3.5rem; 
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    p, form * {
+        font-size: 1.2rem;
+    }
+
+}

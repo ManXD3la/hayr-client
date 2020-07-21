@@ -1,0 +1,17 @@
+footer {
+    height: 5%;
+    bottom: 0;
+    background-color: teal;
+    flex-shrink: 0;
+}
+
+footer * {
+    display: inline;
+    padding: 3px;
+    margin: auto;
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+}
