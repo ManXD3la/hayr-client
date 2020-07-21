@@ -1,26 +1,57 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import {Route,Switch} from 'react-router-dom';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import AppError from './AppError';
+
+// need to import context
+import PublicOnlyRoute from './components/Utils/PublicOnlyRoute';
+import PrivateRoute from './components/Utils/PrivateRoute';
+
+import Community from './components/CommunityPage/Community';
+import EntryForm from './components/NewEntryPage/EntryForm';
+import Footer from './components/Footer/Footer'
+import Journal from './components/JournalPage/Journal';
+import Landing from './components/LandingPage/Landing';
+import Login from './components/LoginPage/Login';
+import NavBar from './components/NavBar/NavBar';
+import NotFound from './components/NotFoundPage/NotFound';
+import ReadEntry from './components/ReadEntryPage/ReadEntry';
+
+class App extends Component {
+//create state with the following
+  constructor(props) {
+    super(props)
+    this.state ={
+      userName: '',
+      password: ''
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <NavBar ></NavBar>
+        <main role='main'>
+          <Switch>
+            {/*<PublicOnlyRoute exact path='/' component={Landing} />  */}
+            <Route exact path='/' component={Landing} />
+            {/* <PublicOnlyRoute exact path='/login' component={Login} /> */}
+            <Route exact path='/login' component={Login} />
+            {/* Except for  */}
+            <Route exact path='/journal' component={Journal} />
+            <Route exact path='/journal/new-entry' component={EntryForm} />
+            <Route exact path='/journal/entryId' component={ReadEntry}/>
+              {/*^^^ Make sure dynamic route (:entryId) ^^^ */}
+            <Route exact path='/community/:entryId' component={Community} /> this one
+            <Route component={NotFound} />
+          </Switch>
+        </main>
+        <Footer></Footer>
+      </div>
+    );
+  }
 }
 
 export default App;
