@@ -1,0 +1,26 @@
+form {
+    margin: auto;
+    width: 80vw;
+  }
+  
+  form *{
+    display: block;
+    margin: auto;
+  }
+  
+  textarea {
+    height: 50vh;
+    width: 100%;
+    resize: none;
+  }
+  
+  @media only screen and (min-width: 750px){
+    form{
+      width: 60vw;
+  
+    }
+  }
+  
+  @media only screen and (min-width: 1000px){
+  
+  }

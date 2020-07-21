@@ -1,0 +1,14 @@
+.journalContainer {
+    border: orangered solid 3px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media only screen and (min-width: 750px) {
+    .journalContainer {
+        flex-flow: row wrap;
+    }
+
+}
