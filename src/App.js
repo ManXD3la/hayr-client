@@ -40,10 +40,14 @@ class App extends Component {
             <PublicOnlyRoute exact path='/login' component={Login} />
             {/* Private Route below except for NotFound */}
             <Route exact path='/journal' component={Journal} />
+            {/* <PrivateRoute exact path='/journal' component={Journal} /> */}
             <Route exact path='/journal/new-entry' component={EntryForm} />
-            <Route exact path='/journal/entryId' component={ReadEntry}/>
+            {/* <PrivateRoute exact path='/journal/new-entry' component={EntryForm} /> */}
+            <Route exact path='/journal/:entryId' component={ReadEntry}/>
+            {/* <PrivateRoute exact path='/journal/:entryId' component={ReadEntry}/> */}
               {/*^^^ Make sure dynamic route (:entryId) ^^^ */}
-            <Route exact path='/community/:entryId' component={Community} /> this one
+            <Route exact path='/community/' component={Community} />
+            {/* <PrivateRoute exact path='/community/' component={Community} /> */}
             <Route component={NotFound} />
           </Switch>
         </main>
