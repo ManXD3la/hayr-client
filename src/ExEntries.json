@@ -1,0 +1,42 @@
+[
+        {
+            "id": "6bafd632-5242-48ae-a284-d6c3b1e0bd72",
+            "user_created": 1,
+            "created": "2020-06-24T19:04:49.938Z",
+            "mood": "0,63,255",
+            "reflection": "Yea, so I was just bored today. I'm not sure what else went on",
+            "activities": null,
+            "modified": null,
+            "share_type": "private"
+        },
+        {
+            "id": "1e42251e-4246-46c4-b3e2-81c87ae24ca2",
+            "user_created": 4,
+            "created": "2020-06-24T19:04:49.938Z",
+            "mood": "255,24,0",
+            "reflection": "Angry doesn't do my feelings justice. Seeing that baby bird today made things better",
+            "activities": null,
+            "modified": null,
+            "share_type": "private"
+        },
+        {
+            "id": "ad6da5cf-feaf-47b6-8c45-940cdc6a5dba",
+            "user_created": 3,
+            "created": "2020-06-24T19:04:49.938Z",
+            "mood": "255,24,0",
+            "reflection": "I wrote so many poems today! Amazingggg. No energy to type them today",
+            "activities": null,
+            "modified": null,
+            "share_type": "private"
+        },
+        {
+            "id": "a2a8552f-60b3-4327-b471-065ac1a644ce",
+            "user_created": 2,
+            "created": "2020-06-24T19:04:49.938Z",
+            "mood": "88,0,255",
+            "reflection": "Yea, so I was just bored today. Susie made me bored",
+            "activities": null,
+            "modified": null,
+            "share_type": "private"
+        }
+]

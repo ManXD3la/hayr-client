@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import {Redirect} from 'react-router-dom'
+
 import './Login.css'
 
 import TokenService from '../../services/token-service'
@@ -59,10 +61,12 @@ class Login extends Component {
             TokenService.makeBasicAuthToken(emailAddress.value, password.value)
         );
         
-        // hayrApiService.loginAuthorization( emailAddress.value, password.value) // may need a password converter before validate
+        hayrApiService.getUserInfo()
 
         emailAddress.value = '';
         password.value = '';
+
+        return <Redirect to='/journal' />
     }
 
     render() {

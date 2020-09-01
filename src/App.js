@@ -7,7 +7,7 @@ import AppError from './AppError';
 
 // need to import context
 import PublicOnlyRoute from './components/Utils/PublicOnlyRoute';
-import PrivateRoute from './components/Utils/PrivateRoute';
+import PrivateRoute from './components/Utils/PrivateRoute.js';
 
 import Community from './components/CommunityPage/Community';
 import EntryForm from './components/NewEntryPage/EntryForm';
@@ -37,9 +37,8 @@ class App extends Component {
           <Switch>
             {/*<PublicOnlyRoute exact path='/' component={Landing} />  */}
             <Route exact path='/' component={Landing} />
-            {/* <PublicOnlyRoute exact path='/login' component={Login} /> */}
-            <Route exact path='/login' component={Login} />
-            {/* Except for  */}
+            <PublicOnlyRoute exact path='/login' component={Login} />
+            {/* Private Route below except for NotFound */}
             <Route exact path='/journal' component={Journal} />
             <Route exact path='/journal/new-entry' component={EntryForm} />
             <Route exact path='/journal/entryId' component={ReadEntry}/>

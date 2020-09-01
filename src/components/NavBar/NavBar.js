@@ -1,25 +1,28 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import TokenService from '../../services/token-service'
+import {Link, Redirect} from 'react-router-dom';
 
 import './NavBar.css';
+
+import TokenService from '../../services/token-service'
+
 
 class NavBar extends Component {
 
     handleLogoutClick = () => {
         TokenService.clearAuthToken()
+        return <Redirect to='/' />
     }
 
     landingNav() {
 
     }
 
-    loggedinButt() {
+    logInButt() {
         // show logout button/link, hayr name to show pop up message about app, invite a friend link/dropdown?
         return(
             <div className='nav-right-side'>
                 {/* change to react 'scroll into view' funciton/condiiton */}
-                <Link to='/#signup-form'> 
+                <Link to='/'> 
                 Sign Up
                 </Link>
                 <Link to='/login'>
@@ -29,7 +32,7 @@ class NavBar extends Component {
         )
     }
 
-    loggedOutButt() {
+    logOutButt() {
         //show login button/link, show sign up link
         return(
             <div className='nav-right-side'>
@@ -47,10 +50,13 @@ class NavBar extends Component {
             <nav role='navigation'>
                 <div className='nav-left-side'>
                 <Link to='/'>HayR</Link>
+                {TokenService.hasAuthToken()
+                ? <Link to='/journal'>Journal</Link>
+                : ''}
                 </div>
                 {TokenService.hasAuthToken()
-                ? this.loggedOutButt()
-                : this.loggedinButt()}
+                ? this.logOutButt()
+                : this.logInButt()}
             </nav>
         )
     }

@@ -4,20 +4,18 @@ import config from '../config';
 
 const hayrApiService = {
 
-    //Signup
-
-    makeNewUser(userName, eMail, password) {
+    makeNewUser(name, userName, eMail, password) {
         let reqBody = JSON.stringify({
-            userName: userName,
-            emailAddress: eMail,
-            userPassword: password
+            name: name,
+            user_name: userName,
+            email: eMail,
+            password: password
         })
         console.log(reqBody)
-        return fetch(`${config.API_ENDPOINT}/users`, {
+        return fetch(`${config.API_ENDPOINT}/user`, {
             method: 'POST',
             headers: {
-                'content-type': 'application/json',
-                'authorization': `basic ${TokenService.getAuthToken()}`,
+                'content-type': 'application/json'
             },
             body: reqBody
         })
@@ -25,35 +23,25 @@ const hayrApiService = {
         .catch(console.error)
     },
     
-    //Authorization
-    // loginAuthorization() {
-    //     return fetch(`${config.API_ENDPOINT}/auth/login`, {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json',
-    //             'authorization': `basic ${TokenService.getAuthToken()}`,
-    //         },
-    //     })
-    // },
-
 
     //User Endpoints
 
     //
     
-    getUserInfo() {
-        return fetch(`${config.API_ENDPOINT}/users`, {
+    getUserInfo(userName) {
+        return fetch(`${config.API_ENDPOINT}/user/${userName}`, {
             headers: {
                 'content-type': 'application/json',
                 'authorization': `basic ${TokenService.getAuthToken()}`,
             },
         })
+        .then(userName => console.log(userName))
     },
 
+//updateUserInfo
 
-
-    deleteUserAcct() {
-        return fetch(`${config.API_ENDPOINT}/users`, {
+    deleteUserAcct(userName) {
+        return fetch(`${config.API_ENDPOINT}/user/${userName}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
@@ -63,59 +51,36 @@ const hayrApiService = {
     },
 
     // Entries
-    postEntry(userId, mood, refelction) {
+    postEntry(userId, reflection, mood_pleasant, mood_energy) {
         let reqBody = JSON.stringify({
-            entryId:'', //cuid
             userId: userId,
-            mood: mood,
-            refelction: refelction
+            refelction: reflection,
+            mood_pleasant: mood_pleasant,
+            mood_energy: mood_energy
         })
 
-        return fetch(`${config.API_ENDPOINT}/journal`, {
+        return fetch(`${config.API_ENDPOINT}/entry`, {
             method: 'POST',
             headers: {
-                // 'content-type': 'application/json',
-                // 'authorization': `basic ${TokenService.getAuthToken()}`,
+                'content-type': 'application/json',
+                'authorization': `basic ${TokenService.getAuthToken()}`,
             },
+            body: reqBody
         })
     },
 
     getJournalInfo() {
-        return fetch(`${config.API_ENDPOINT}/journal`, {
+        return fetch(`${config.API_ENDPOINT}/entry`, {
             headers: {
+                'content-type': 'application/json',
                 'authorization': `basic ${TokenService.getAuthToken()}`,
             },
         })
         .then(entries => console.log(entries))
     },
 
-    getEntry(entryId) {
-        return fetch(`${config.API_ENDPOINT}/journal`, {
-            headers: {
-                'authorization': `basic ${TokenService.getAuthToken()}`,
-            },
-        })
-    },
-
     getPublicEntries() {
-        return fetch(`${config.API_ENDPOINT}/journal/public`, {
-            headers: {
-                'authorization': `basic ${TokenService.getAuthToken()}`,
-            },
-        })
-    },
-
-    getSimilarEntries(entryID) {
-        return fetch(`${config.API_ENDPOINT}/journal/like-entry`, {
-            headers: {
-                'authorization': `basic ${TokenService.getAuthToken()}`,
-            },
-        })
-    },
-
-    putUpdatedEntry() {
-        return fetch(`${config.API_ENDPOINT}/journal`, {
-            method: 'PUT',
+        return fetch(`${config.API_ENDPOINT}/entry/public`, {
             headers: {
                 'content-type': 'application/json',
                 'authorization': `basic ${TokenService.getAuthToken()}`,
@@ -123,8 +88,37 @@ const hayrApiService = {
         })
     },
 
-    deleteEntry() {
-        return fetch(`${config.API_ENDPOINT}/journal`, {
+    getEntry(entryId) {
+        return fetch(`${config.API_ENDPOINT}/entry/${entryId}`, {
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `basic ${TokenService.getAuthToken()}`,
+            },
+        })
+    },
+
+    getSimilarEntries(entryId) {
+        return fetch(`${config.API_ENDPOINT}/entry/${entryId}/community`, {
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `basic ${TokenService.getAuthToken()}`,
+            },
+        })
+    },
+
+    patchUpdatedEntry(entryId, entryInfoToUpdate) {
+        return fetch(`${config.API_ENDPOINT}/entry`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `basic ${TokenService.getAuthToken()}`,
+            },
+            body: entryInfoToUpdate
+        })
+    },
+
+    deleteEntry(entryId) {
+        return fetch(`${config.API_ENDPOINT}/entry/${entryId}`, {
             method: 'DELETE',
             headers: {
                 'authorization': `basic ${TokenService.getAuthToken()}`,

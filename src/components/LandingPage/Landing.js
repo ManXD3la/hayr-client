@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
-import  hayrApiService from '../../services/api-service.js';
+import {Redirect} from 'react-router-dom'
+
 import './Landing.css';
+
+import  hayrApiService from '../../services/api-service.js';
+import TokenService from '../../services/token-service'
 
 class Landing extends Component {
     constructor(props) {
@@ -46,17 +50,17 @@ class Landing extends Component {
         const {displayName, emailAddress, password} = ev.target;
 
         console.log(displayName.value, emailAddress.value, password.value);
-        // TokenService.saveAuthToken(
-        //     TokenService.makeBasicAuthToken(emailAddress.value, password.value)
-        // );
 
         hayrApiService.makeNewUser(displayName.value, emailAddress.value, password.value)
-        // then save password
-        // then move to journal
-        
+
+        TokenService.saveAuthToken(
+            TokenService.makeBasicAuthToken(emailAddress.value, password.value)
+        );
         displayName.value = '';
         emailAddress.value = '';
         password.value = '';
+
+        return <Redirect to='/journal' />
     }
 
     displayError () {
@@ -76,7 +80,7 @@ class Landing extends Component {
     }
 
     render() {
-        const submitEnabled = this.state.emailFormatY && this.state.passwordLengthY ;
+        const submitEnabled = (this.state.emailFormatY && this.state.passwordLengthY) || TokenService.hasAuthToken() ;
 
         return (
             <div className='landingContainer'>
