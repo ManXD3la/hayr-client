@@ -9,6 +9,7 @@ import AppError from './AppError';
 import PublicOnlyRoute from './components/Utils/PublicOnlyRoute';
 import PrivateRoute from './components/Utils/PrivateRoute.js';
 
+import AccountContext from './contexts/AccountContext'
 import Community from './components/CommunityPage/Community';
 import EntryForm from './components/NewEntryPage/EntryForm';
 import Footer from './components/Footer/Footer'
@@ -26,35 +27,72 @@ class App extends Component {
     this.state ={
       loggedIn: false,
       userName: '',
-      displayName: '',
-      entries:[]
+      journal:[]
     }
   }
 
+  changeLogin = () => {
+    this.setState({
+      loggedIn: !this.state.loggedIn
+    })
+  }
+
+  fillJournal = entries => {
+    this.setState({
+      journal: entries
+    })
+  }
+
+  handleAddEntry = entry => {
+    this.setState({
+      journal: [
+        ...this.state.journal,
+        entry
+      ]
+    })
+  }
+
+  handleDeleteEntry = entryId => {
+    this.setState({
+      journal: this.state.journal.filter(entry => entry.id !== entryId)
+    })
+  }
+
   render() {
+    const ctxValues = {
+      loggedIn: this.state.loggedIn,
+      journal: this.state.journal,
+      changeLogin: this.changeLogin,
+      fillJournal:this.fillJournal,
+      addEntry:this.handleAddEntry,
+      deleteEntry:this.handleDeleteEntry
+    }
+
     return (
-      <div className="App">
-        <NavBar ></NavBar>
-        <main role='main'>
-          <Switch>
-            {/*<PublicOnlyRoute exact path='/' component={Landing} />  */}
-            <Route exact path='/' component={Landing} />
-            <PublicOnlyRoute exact path='/login' component={Login} />
-            {/* Private Route below except for NotFound */}
-            <Route exact path='/journal' component={Journal} />
-            {/* <PrivateRoute exact path='/journal' component={Journal} /> */}
-            <Route exact path='/journal/new-entry' component={EntryForm} />
-            {/* <PrivateRoute exact path='/journal/new-entry' component={EntryForm} /> */}
-            <Route exact path='/journal/:entryId' component={ReadEntry}/>
-            {/* <PrivateRoute exact path='/journal/:entryId' component={ReadEntry}/> */}
-              {/*^^^ Make sure dynamic route (:entryId) ^^^ */}
-            <Route exact path='/community/' component={Community} />
-            {/* <PrivateRoute exact path='/community/' component={Community} /> */}
-            <Route component={NotFound} />
-          </Switch>
-        </main>
-        <Footer></Footer>
-      </div>
+      <AccountContext.Provider value={ctxValues}>
+        <div className="App">
+          <NavBar ></NavBar>
+          <main role='main'>
+            <Switch>
+              {/*<PublicOnlyRoute exact path='/' component={Landing} />  */}
+              <Route exact path='/' component={Landing} />
+              <PublicOnlyRoute exact path='/login' component={Login} />
+              {/* Private Route below except for NotFound */}
+              <Route exact path='/journal' component={Journal} />
+              {/* <PrivateRoute exact path='/journal' component={Journal} /> */}
+              <Route exact path='/journal/new-entry' component={EntryForm} />
+              {/* <PrivateRoute exact path='/journal/new-entry' component={EntryForm} /> */}
+              <Route exact path='/journal/:entryId' component={ReadEntry}/>
+              {/* <PrivateRoute exact path='/journal/:entryId' component={ReadEntry}/> */}
+                {/*^^^ Make sure dynamic route (:entryId) ^^^ */}
+              <Route exact path='/community/' component={Community} />
+              {/* <PrivateRoute exact path='/community/' component={Community} /> */}
+              <Route component={NotFound} />
+            </Switch>
+          </main>
+          <Footer></Footer>
+        </div>
+      </AccountContext.Provider>
     );
   }
 }

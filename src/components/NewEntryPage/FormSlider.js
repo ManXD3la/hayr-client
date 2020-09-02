@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import EntryFormContext from '../../contexts/EntryFormContext';
 import Slider from '@material-ui/core/Slider';
 
 class FormSlider extends Component {
+    static contextType = EntryFormContext;
     constructor(props) {
         super(props)
         this.state = {
@@ -13,7 +15,11 @@ class FormSlider extends Component {
         this.setState({
             value: newValue
         });
-        console.log(this.state.value)
+        console.log(this.state.value);
+        if (this.props.change === 'energy') {
+            this.context.changeEnergy(newValue)
+        }
+        else {this.context.changePleasant(newValue)}
     }
 
 
