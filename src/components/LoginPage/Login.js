@@ -10,27 +10,13 @@ class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            emailFormatY: true,
             loginAttempt: 0
         }
     }
-    
-    validateEmail = eMail => {
-        console.log(eMail);
-        const emailFormatRegEx = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
-        if (emailFormatRegEx.test(eMail)) {
-            this.setState({
-                emailFormatY: true
-            })
-        }
-        else {
-            this.setState({
-                emailFormatY: false
-            })
-        }
-        console.log(this.state.emailFormatY)
-    }
 
+    componentDidMount() {
+        TokenService.clearAuthToken()
+    }
 
     loginAttemptIncrement() {
         this.setState({
@@ -42,45 +28,59 @@ class Login extends Component {
     }
 
     displayError () {
-        if (!this.state.emailFormatY) {
-            return 'Please enter valid email address'
+        if (this.state.loginAttempt) {
+            return '...Please enter valid user name and password...'
         }
-
-        else {return ''}
+        if (this.state.loginAttempt === -1) {
+            return '...please wait...'
+        }
     }
-    // Needed functions:submit password set up
 
     handleLoginButt = (ev) => {
         ev.preventDefault();
-        const {emailAddress, password} = ev.target;
+        const {userName, password} = ev.target;
         this.loginAttemptIncrement()
-        console.log(`Login Attempt: ${this.state.loginAttempt}`, `Email: ${emailAddress.value}`, `Password: ${password.value}`);
+        console.log(`Login Attempt: ${this.state.loginAttempt}`, `User Name: ${userName.value}`, `Password: ${password.value}`);
         
 
         TokenService.saveAuthToken(
-            TokenService.makeBasicAuthToken(emailAddress.value, password.value)
+            TokenService.makeBasicAuthToken(userName.value, password.value)
         );
         
-        hayrApiService.getUserInfo()
+        hayrApiService.loginAuth()
+        .then( userInfo => {
+            if (!userInfo.ok) {
+                TokenService.clearAuthToken()
+            }
+            else {    
+                userName.value = '';
+                password.value = '';
+                this.setState({
+                    loginAttempt: -1,
+                    loginSuccess: true
+                })
+            }
+            })
+    }
 
-        emailAddress.value = '';
-        password.value = '';
-
-        return <Redirect to='/journal' />
+    loginSuccess() {
+        if (this.state.loginSuccess) 
+        return <Redirect to="/journal" />
     }
 
     render() {
         return(
             <form className='loginBox' onSubmit={this.handleLoginButt}>
                 <h1>Login</h1>
-                <label htmlFor='emailAddress'></label>
-                <input required type='text' name='emailAddress' id='emailAddress' onChange={e => this.validateEmail(e.target.value)} placeholder='welcomeback@hayr.com'></input>
+                <label htmlFor='userName'></label>
+                <input required type='text' name='userName' id='userName' placeholder='User namE'></input>
                 <br/>
                 <label htmlFor='password'></label>
-                <input required type='password' name='password' id='password' placeholder='password'></input>
+                <input required type='password' name='password' id='password' placeholder='PassworD'></input>
                 <br/>
                 <p className='formErrorMessage'>{this.displayError()}</p>
                 <input type='submit' name='login' id='loginButt' value='Login'></input>
+                {this.loginSuccess()}
             </form>
         );
     }

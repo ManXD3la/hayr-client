@@ -4,29 +4,39 @@ import config from '../config';
 
 const hayrApiService = {
 
-    makeNewUser(name, userName, eMail, password) {
-        let reqBody = JSON.stringify({
-            name: name,
-            user_name: userName,
-            email: eMail,
-            password: password
-        })
-        console.log(reqBody)
-        return fetch(`${config.API_ENDPOINT}/user`, {
+    
+//Auth
+
+    loginAuth() {
+        return fetch(`${config.API_ENDPOINT}/auth`, {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'authorization': `basic ${TokenService.getAuthToken()}`,
             },
-            body: reqBody
         })
-        .then(console.log('successful submission'))
-        .catch(console.error)
     },
     
-
-    //User Endpoints
-
-    //
+    
+//User Endpoints
+    makeNewUser(name, userName, eMail, password) {
+            let reqBody = JSON.stringify({
+                name: name,
+                user_name: userName,
+                email: eMail,
+                password: password
+            })
+            console.log(reqBody)
+            return fetch(`${config.API_ENDPOINT}/user`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: reqBody
+            })
+            .then(console.log('successful submission'))
+            .catch(console.error)
+    },
     
     getUserInfo(userName) {
         return fetch(`${config.API_ENDPOINT}/user/${userName}`, {

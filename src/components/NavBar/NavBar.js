@@ -5,16 +5,28 @@ import './NavBar.css';
 
 import TokenService from '../../services/token-service'
 
-
+// alter to update app state via context
 class NavBar extends Component {
-
-    handleLogoutClick = () => {
-        TokenService.clearAuthToken()
-        return <Redirect to='/' />
+    constructor(props) {
+        super(props)
+        this.state ={
+            loggedIn: null,
+        }
     }
 
-    landingNav() {
+    componentDidMount() {
+        if (TokenService.hasAuthToken())
+            this.setState({loggedIn: true})
+    }
 
+    handleLogoutClick = () => {
+        TokenService.clearAuthToken();
+        this.setState({loggedIn: false})
+    }
+    
+    logoutToLanding() {
+        if (this.state.loggedIn === false)
+            return <Redirect to='/' />
     }
 
     logInButt() {
@@ -57,6 +69,7 @@ class NavBar extends Component {
                 {TokenService.hasAuthToken()
                 ? this.logOutButt()
                 : this.logInButt()}
+                {this.logoutToLanding()}
             </nav>
         )
     }
