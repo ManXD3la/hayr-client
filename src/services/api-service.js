@@ -45,7 +45,11 @@ const hayrApiService = {
                 'authorization': `basic ${TokenService.getAuthToken()}`,
             },
         })
-        .then(userName => console.log(userName))
+        .then(res => {
+            if (!res.ok)
+                return res.json().then(e => Promise.reject(e))
+            return res.json()
+            })
     },
 
 //updateUserInfo
@@ -61,9 +65,8 @@ const hayrApiService = {
     },
 
     // Entries
-    postEntry(userId, reflection, mood_pleasant, mood_energy) {
+    postEntry(reflection, mood_pleasant, mood_energy) {
         let reqBody = JSON.stringify({
-            userId: userId,
             refelction: reflection,
             mood_pleasant: mood_pleasant,
             mood_energy: mood_energy
@@ -77,16 +80,24 @@ const hayrApiService = {
             },
             body: reqBody
         })
+        .then(res => {
+            if (!res.ok)
+                return res.json().then(e => Promise.reject(e))
+            return res.json()
+            })
     },
 
     getJournalInfo() {
         return fetch(`${config.API_ENDPOINT}/entry`, {
             headers: {
-                'content-type': 'application/json',
                 'authorization': `basic ${TokenService.getAuthToken()}`,
             },
         })
-        .then(entries => console.log(entries))
+        .then(res => {
+            if (!res.ok)
+                return res.json().then(e => Promise.reject(e))
+            return res.json()
+            })
     },
 
     getPublicEntries() {
@@ -96,6 +107,11 @@ const hayrApiService = {
                 'authorization': `basic ${TokenService.getAuthToken()}`,
             },
         })
+        .then(res => {
+            if (!res.ok)
+                return res.json().then(e => Promise.reject(e))
+            return res.json()
+            })
     },
 
     getEntry(entryId) {
@@ -105,6 +121,11 @@ const hayrApiService = {
                 'authorization': `basic ${TokenService.getAuthToken()}`,
             },
         })
+        .then(res => {
+            if (!res.ok)
+                return res.json().then(e => Promise.reject(e))
+            return res.json()
+            })
     },
 
     getSimilarEntries(entryId) {
@@ -114,6 +135,11 @@ const hayrApiService = {
                 'authorization': `basic ${TokenService.getAuthToken()}`,
             },
         })
+        .then(res => {
+            if (!res.ok)
+                return res.json().then(e => Promise.reject(e))
+            return res.json()
+            })
     },
 
     patchUpdatedEntry(entryId, entryInfoToUpdate) {
@@ -125,6 +151,11 @@ const hayrApiService = {
             },
             body: entryInfoToUpdate
         })
+        .then(res => {
+            if (!res.ok)
+                return res.json().then(e => Promise.reject(e))
+            return res.json()
+            })
     },
 
     deleteEntry(entryId) {
