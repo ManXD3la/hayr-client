@@ -8,7 +8,7 @@ const hayrApiService = {
 //Auth
 
     loginAuth() {
-        return fetch(`${config.API_ENDPOINT}/auth`, {
+        return fetch(`${config.API_ENDPOINT}/auth/login`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

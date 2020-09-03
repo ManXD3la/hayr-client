@@ -1,5 +1,15 @@
 .App {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  overflow: auto;
+  background: rgba(0, 128, 0, 0.3);
   text-align: center;
+  display: grid;
+  grid-template-rows: [header] 1fr [pages] 8fr[footer] 1fr;
+  place-items: stretch stretch;
+  place-content: stretch stretch;
 }
 
 .App-logo {

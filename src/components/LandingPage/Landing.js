@@ -114,11 +114,11 @@ class Landing extends Component {
                 <h3>Record Reflection, Share Safely</h3>
                 <p>As you become more comfortable with entering a few words about your day as  a reflection, you always have the option to reveal them to others anonymously. By sharing a reflection to the HayR community, you are able to see how others are during that day. When we accept and appreciate all thoughts and feelings that exist, we are able to appreciate the vastness of the human experience like stars in the night sky.</p>
             </section>
-            </section>
 
             <section>
                 <h3>Take note of your triggers</h3>
                 <p>You may know how you feel at the moment, but do you know everything that led up to that feeling? By recording mood and thoughts, a person can free mental energy to create a mental timeline of the day. This timeliine allows us to better pinpoint the triggers and thoughts that brought you to your high and low feelings. Be as detailed as you want. The more, the better.</p>
+            </section>
 
             <section>
                 <h3>Ready to Reflect? Sign Up Here</h3>
