@@ -19,7 +19,7 @@ const hayrApiService = {
     
     
 //User Endpoints
-    makeNewUser(name, userName, eMail, password) {
+    makeNewUser(userName, eMail, password, name='' ) {
             let reqBody = JSON.stringify({
                 name: name,
                 user_name: userName,
@@ -34,8 +34,11 @@ const hayrApiService = {
                 },
                 body: reqBody
             })
-            .then(console.log('successful submission'))
-            .catch(console.error)
+            .then(res => {
+                if (!res.ok)
+                    return res.json().then(e => Promise.reject(e))
+                return res.json()
+                })
     },
     
     getUserInfo(userName) {

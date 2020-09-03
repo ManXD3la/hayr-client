@@ -8,10 +8,10 @@ function EntryComp(props) {
         border: `solid 10vh rgb(255,${props.moodPleasant},${props.moodEnergy})`
     }
     return (
-        <Link to={`/journal/${props.id}`}>
+        <Link to={`/${props.path}/${props.id}`}>
             <div className='entryBox' style={moodBorder}
 >
-                {props.date}
+                {!props.date? null: props.date}
             </div>
         </Link>
     )

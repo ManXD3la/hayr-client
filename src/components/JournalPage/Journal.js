@@ -50,7 +50,8 @@ class Journal extends Component {
                         id={entry.id} 
                         moodPleasant={entry.mood_pleasant} 
                         moodEnergy={entry.mood_energy} 
-                        relfection={entry.reflection}></EntryComp>
+                        relfection={entry.reflection}
+                        path={'journal'}></EntryComp>
                 )}
             </section>
         )
