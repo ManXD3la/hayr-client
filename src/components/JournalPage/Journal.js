@@ -42,16 +42,17 @@ class Journal extends Component {
         let entries = this.state.entries;
         if (!entries.length) {return}
         return (
-            <section>
+            <section className='entryContainer'>
                 {entries.map( entry =>
                     <EntryComp 
-                        key={entry.id}
-                        date={entry.date_created.slice(0,10).split('-').reverse().join('/')} 
-                        id={entry.id} 
-                        moodPleasant={entry.mood_pleasant} 
-                        moodEnergy={entry.mood_energy} 
-                        relfection={entry.reflection}
-                        path={'journal'}></EntryComp>
+                    key={entry.id}
+                    date={entry.date_created.slice(0,10).split('-').reverse().join('/')} 
+                    id={entry.id} 
+                    moodPleasant={entry.mood_pleasant} 
+                    moodEnergy={entry.mood_energy} 
+                    reflection={entry.reflection}
+                    zIndex={entry.id * -1}
+                    path={'journal'}></EntryComp>
                 )}
             </section>
         )

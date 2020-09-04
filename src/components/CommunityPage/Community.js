@@ -16,13 +16,7 @@ class Community extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            communityEntries:[],
-            testEntries: [{id: 1,  mood_pleasant: 235, mood_energy: 255, reflection :`Yea, so I was just bored today. I''m not sure what else went on`, date_created: '2020-08-31 23:16:45'},
-            {id: 4, mood_pleasant: 255, mood_energy: 205, reflection :`Angry doesn''t do my feelings justice. Seeing that baby bird today made things better`, date_created: '2020-08-31 23:16:45'},
-            {id: 3,  mood_pleasant: 215, mood_energy: 255, reflection :`I wrote so many poems today! Amazingggg. No energy to type them today`, date_created: '2020-08-31 23:16:45'},
-            {id: 2, mood_pleasant: 255, mood_energy: 155, reflection :`Yea, so I was just bored today. Susie made me bored`, date_created: '2020-08-31 23:16:45'}
-            ],
-            currentDate:'okay'
+            communityEntries:[]
         }
     }
 
@@ -31,6 +25,7 @@ class Community extends Component {
     componentDidMount() {
         const { entryId } = this.props.match.params;
         if (entryId) {
+            console.log('entryId from params',entryId)
             hayrApiService.getSimilarEntries(entryId)
             .then( entries => {
                 this.setState({
@@ -56,7 +51,7 @@ class Community extends Component {
     }
 
     renderEntryComps() {
-        let entries = this.state.testEntries;
+        let entries = this.state.communityEntries;
         if (!entries.length) {return}
         return (
             <section>
@@ -74,8 +69,6 @@ class Community extends Component {
     }
 
     render() {
-        
-        const date = 'today'
         return(
             <div className='journalContainer community'>
                 <section className='filterForm'>
