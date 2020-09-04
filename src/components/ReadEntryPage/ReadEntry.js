@@ -31,7 +31,7 @@ class ReadEntry extends Component {
         const entry = this.state.entry
         console.log('entry wheres reflection', entry);
         const moodBorder ={
-            border: `solid 10vh rgb(255,${entry.mood_pleasant},${entry.mood_energy})`
+            border: `solid 10vh rgb(${entry.mood_pleasant},${entry.mood_energy},200)`
         }
 
         return(
@@ -40,11 +40,13 @@ class ReadEntry extends Component {
             <section className='entryReader'>
                 <div className='moodDisplay' style={moodBorder}>{entry.date}
                     <label  htmlFor='pleasantnessRange'> Pleasantness</ label>
-                    <input type="range" min="0" max="255" value="100" className="slider" id="myRange" />
+                    <input type='range' min='0' max='255' value={`${entry.mood_pleasant}`} className='slider' id='pleasantnessRange' />
                     <br />
-                    <input type="range" min="0" max="255" value="150" className="slider" id="myRange" />
+                    <input type='range' min='0' max='255' value={`${entry.mood_energy}`} className='slider' id='energyRange' />
                     <label  htmlFor='energyRange'/>Energy<label />
-        <p>Reflection : {entry.reflection}</ p>                
+                    <br/>
+                    Reflection:
+                    <p>{entry.reflection}</p>                
                 </ div>
             </ section>
         )
