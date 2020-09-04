@@ -1,30 +1,79 @@
 nav {
     grid-row: 1;
-    height: 5%;
-    width: 100vw;
+    width: 100%;
     margin: 0;
     padding: 0;
-    background-color: teal;
     position: relative;
-    flex-shrink: 0;
+    border-bottom-style: inset;
+    border-bottom-width: 3px;
+    border-bottom-color: teal;
 }
 
-nav div {
-
-    display: inline;
-    margin: 10px 10px;
-}
-
-nav div a {
-    text-align: center;
-    padding: 3px;
-    text-decoration: none;
+nav > div {
+    /* display: inline; */
+    height: 100%;
+    margin: 0 3px;
+    justify-items: end;
 }
 
 .nav-left-side {
+    margin-left: 4px;
     float: left;
 }
 
+.nav-left-side > * {
+    display: block;
+    text-align: left;
+}
+
+
+nav div a, nav div a:visited {
+    text-align: center;
+    padding: 3px;
+    text-decoration: none;
+    color: #1B2469;
+}
+
+nav div a.nav-a:hover,  nav div a.nav-a:focus {
+    color: #22248A;
+    text-decoration: underline overline solid #000000;
+}
+nav div a.app-title:hover,  nav div a.app-title:focus {
+    color: #1B2469;
+    text-decoration: underline solid #000000;
+}
+.nav-a {
+    font-family: 'Monsterrat', sans-serif;
+    font-size: medium;
+    font-weight: 600;
+}
+
+.app-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: xx-large;
+    font-weight: 900;
+    color: #22248A;
+    
+}
+
+nav div a:active{
+    color: #747474;
+}
 .nav-right-side {
+    margin-right: 4px;
     float: right;
 }
+
+.nav-right-side > * {
+    position: relative;
+    text-align: left;
+vertical-align: bottom;}
+
+@media only screen and (min-width: 750px) {
+    nav {
+        padding: 0 2%;
+    }
+}
+
+
+
