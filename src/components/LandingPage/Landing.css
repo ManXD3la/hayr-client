@@ -1,3 +1,12 @@
+.landingContainer {
+    overflow: auto;
+}
+
+.landingBtn {
+    text-decoration: none;
+    
+}
+
 section {
     width: 80vw;
     margin: auto
