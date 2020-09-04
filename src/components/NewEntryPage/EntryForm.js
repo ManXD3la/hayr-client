@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import EntryFormContext from '../../contexts/EntryFormContext';
+import AccountContext from '../../contexts/AccountContext'
 import FormSlider from './FormSlider'
 import './EntryForm.css';
 import hayrApiService from '../../services/api-service';
 
 class EntryForm extends Component {
     // state for mood sliders for submission
+    static contextType = AccountContext;
     constructor() {
         super()
         this.state = {
@@ -36,17 +38,15 @@ class EntryForm extends Component {
     handleSubmit = (ev) => {
         ev.preventDefault();
         const{ reflection, moodPleasant, moodEnergy } = this.state
-        if (!reflection)
-            console.log('relfection empty',); 
-        // hayrApiService.postEntry(reflection, moodPleasant, moodEnergy)
-        // .then(entry => {
-        //     this.context.addentry(entry[0])
-        //     this.props.history.push(`/journal`)
-        //     })
-        // .catch(error => {
-        //     console.error({ error })
-        // })
-        //context add entry
+
+        hayrApiService.postEntry(reflection, moodPleasant, moodEnergy)
+        .then(entry => {
+            this.context.addEntry(entry[0])
+            this.props.history.push(`/journal`)
+            })
+        .catch(error => {
+            console.error({ error })
+        })
     }
 
 
