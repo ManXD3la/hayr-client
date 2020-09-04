@@ -1,6 +1,5 @@
 footer {
     grid-row: 4;
-    height: 5%;
     bottom: 0;
     background-color: teal;
     flex-shrink: 0;
