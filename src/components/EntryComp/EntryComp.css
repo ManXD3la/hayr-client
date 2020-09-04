@@ -1,7 +1,26 @@
 .entryBox {
-    width: 20vh;
-    height: 20vh;
+    position: relative;
+    width: 50%;
+    /* width: vw; */
+    /* height: 20vw; */
+    padding: 8rem;
     margin: auto;
-    /* border: solid 10vh blueviolet; */
+    border-width: 10rem;
     border-radius: 50%;
+}
+
+.entryBox:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.entryContent {
+    font-size: 2rem;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    padding-top: 50%;
 }
