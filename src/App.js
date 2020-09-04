@@ -76,14 +76,13 @@ class App extends Component {
             <Switch>
               <Route exact path='/' component={Landing} />
               <PublicOnlyRoute exact path='/login' component={Login} />
+              <PublicOnlyRoute exact path='/login/:demo' component={Login} />
               <PrivateRoute exact path='/journal' component={Journal} />
               <PrivateRoute exact path='/journal/new-entry' component={EntryForm} />
               <PrivateRoute exact path='/journal/:entryId' component={ReadEntry}/>
-              {/* <Route exact path='/journal/:entryId/community/' component={Community} /> */}
               <PrivateRoute exact path='/journal/:entryId/community/' component={Community} />
               <PrivateRoute exact path='/community/' component={Community} />
-              {/* <Route exact path='/community/:entryId' component={ReadEntry} /> */}
-              {/* <PrivateRoute exact path='/community/:entryId' component={ReadEntry} /> */}
+              <PrivateRoute exact path='/community/:entryId' component={ReadEntry} />
 
               <Route component={NotFound} />
             </Switch>
