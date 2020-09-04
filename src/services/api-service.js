@@ -70,7 +70,7 @@ const hayrApiService = {
     // Entries
     postEntry(reflection, mood_pleasant, mood_energy) {
         let reqBody = JSON.stringify({
-            refelction: reflection,
+            reflection: reflection,
             mood_pleasant: mood_pleasant,
             mood_energy: mood_energy
         })

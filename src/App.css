@@ -4,7 +4,7 @@
   width: 100vw;
   margin: 0;
   overflow: auto;
-  background: rgba(0, 128, 0, 0.3);
+  background: #F0FED9;
   text-align: center;
   display: grid;
   grid-template-rows: [header] 1fr [pages] 8fr[footer] 1fr;
@@ -12,9 +12,12 @@
   place-content: stretch stretch;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App main * {
+  font-family: 'Monsterrat', sans-serif;
+}
+
+.App + * {
+  background-color: #F0FED9;
 }
 
 @media (prefers-reduced-motion: no-preference) {
