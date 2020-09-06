@@ -6,7 +6,7 @@ HayR is an application for online journaling used by companies to create safe sp
 
 ### Live Link and Demo Account
 
-The live site can be accessed at [https://appnamehere.vercel.app/](https://appnamehere.vercel.app/)
+The live site can be accessed at [Here](https://hayr-client-c151vfp53.vercel.app/)
 
 To try the service, please use the credentials below to log in
 
