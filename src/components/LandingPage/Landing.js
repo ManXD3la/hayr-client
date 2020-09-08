@@ -117,7 +117,7 @@ class Landing extends Component {
 
                     <form className='signup-form' id="signup-form" onSubmit={this.handleSignUpSubmit}>
                     <div>
-                    <label htmlFor="displayName">Your name</label>
+                    <label htmlFor="displayName">User name</label>
                     <input required placeholder='User Name' type="text" name='displayName' id='displayName'/>
                     </div>
                     <div>
