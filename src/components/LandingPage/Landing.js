@@ -28,7 +28,6 @@ class Landing extends Component {
                 emailFormatY: false
             })
         }
-        console.log(this.state.emailFormatY)
     }
 
     validatePassword = password => {
@@ -45,20 +44,15 @@ class Landing extends Component {
         // this.setState({
 
         // })
-        console.log(this.state.passwordLengthY)
     }
     
     handleSignUpSubmit = (ev) => {
         ev.preventDefault();
         const {displayName, emailAddress, password} = ev.target;
 
-        console.log(displayName.value, emailAddress.value, password.value);
-
         hayrApiService.makeNewUser(displayName.value, emailAddress.value, password.value)
             .then(res => {
-                console.log('res to check:',res)
                 if (res[0].user_name){
-                    console.log('from signup:',res)
                     TokenService.saveAuthToken(
                         TokenService.makeBasicAuthToken(displayName.value, password.value)
                     );

@@ -23,7 +23,6 @@ class Login extends Component {
             loginAttempt: this.state.loginAttempt + 1
         })
         if (this.state.loginAttempt % 3 === 0) {
-            console.log('Take a chill pill')
         }
     }
 
@@ -39,9 +38,7 @@ class Login extends Component {
     handleLoginButt = (ev) => {
         ev.preventDefault();
         const {userName, password} = ev.target;
-        this.loginAttemptIncrement()
-        console.log(`Login Attempt: ${this.state.loginAttempt}`, `User Name: ${userName.value}`, `Password: ${password.value}`);
-        
+        this.loginAttemptIncrement()        
 
         TokenService.saveAuthToken(
             TokenService.makeBasicAuthToken(userName.value, password.value)

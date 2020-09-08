@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import './EntryComp.css';
 
 function EntryComp(props) {
-    console.log(props.date)
     const moodBorder ={
         'border-color': `rgb(${props.moodPleasant},${props.moodEnergy},245)`,
         }

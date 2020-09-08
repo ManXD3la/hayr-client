@@ -25,7 +25,6 @@ class Community extends Component {
     componentDidMount() {
         const { entryId } = this.props.match.params;
         if (entryId) {
-            console.log('entryId from params',entryId)
             hayrApiService.getSimilarEntries(entryId)
             .then( entries => {
                 this.setState({

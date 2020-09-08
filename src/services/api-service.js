@@ -26,7 +26,6 @@ const hayrApiService = {
                 email: eMail,
                 password: password
             })
-            console.log(reqBody)
             return fetch(`${config.API_ENDPOINT}/user`, {
                 method: 'POST',
                 headers: {
@@ -149,8 +148,6 @@ const hayrApiService = {
     patchUpdatedEntry(entryId, entryInfo) {
         let newShareType = entryInfo
         
-        console.log('changing to:', newShareType)
-
         return fetch(`${config.API_ENDPOINT}/entry/${entryId}`, {
             method: 'PATCH',
             headers: {
