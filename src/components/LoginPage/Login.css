@@ -48,3 +48,8 @@
     color: white;
     background: #1B2469;
 }
+
+p.formErrorMessage {
+    margin: auto;
+    text-align: center;
+}
