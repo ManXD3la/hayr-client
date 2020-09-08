@@ -20,7 +20,6 @@ class ReadEntry extends Component {
         const { entryId } = this.props.match.params;
         hayrApiService.getEntry(entryId)
         .then(entry => {
-            console.log('from get entry service:', entry)
             this.setState({
                 entry: entry[0]
             })
@@ -32,7 +31,6 @@ class ReadEntry extends Component {
             
             hayrApiService.patchUpdatedEntry(this.state.entry.id, shareType)
             .then( updatedEntry => {
-                console.log('from patch:', updatedEntry)
                 this.setState ({
                     entry: updatedEntry[0]
                 })
@@ -81,7 +79,6 @@ class ReadEntry extends Component {
         // const { journal } = this.context;
         // const entry = journal.find(entry => entry.id == entryId)
         const entry = this.state.entry
-        console.log('entry wheres reflection', entry);
         const moodBorder ={
             border: `solid 10vh rgb(${entry.mood_pleasant},${entry.mood_energy},245)`
         }
