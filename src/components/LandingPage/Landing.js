@@ -96,12 +96,12 @@ class Landing extends Component {
                 </header>
                 <section>
                     <h3>Improve Your Life, Day by Day</h3>
-                    <p>HayR is built on the wisdom and science of daily reflection and its positive impacts on quality of life. By making a note of you feelings of energy, pleasantness and any thoughts or reflections on the day with HayR, you can be on your way to more peace in three easy steps.</p>
+                    <p>HayR is built on the wisdom and science of daily reflection and its positive impacts on quality of life. By making a note of your feelings of energy, pleasantness, and any thoughts or reflections on the day with HayR, you can be on your way to more peace in three easy steps.</p>
                 </section>
 
                 <section>
                     <h3>Record Reflection, Share Safely</h3>
-                    <p>As you become more comfortable with entering a few words about your day as  a reflection, you always have the option to reveal them to others anonymously. By sharing a reflection with the HayR community, you are able to see how others are during that day. When we accept and appreciate all thoughts and feelings that exist, we are able to appreciate the vastness of the human experience like stars in the night sky.</p>
+                    <p>As you become more comfortable with entering a few words about your day as a reflection, you always have the option to reveal them to others anonymously. By sharing a reflection with the HayR community, you can see how others are during that day. When we accept and appreciate all thoughts and feelings that exist, we are able to appreciate the vastness of the human experience like stars in the night sky.</p>
                 </section>
 
                 <section>
