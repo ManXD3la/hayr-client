@@ -54,7 +54,7 @@ class Community extends Component {
         let entries = this.state.communityEntries;
         if (!entries.length) {return}
         return (
-            <section>
+            <section className='entryContainer'>
                 {entries.map( entry =>
                     <EntryComp 
                         key={entry.id}
@@ -71,11 +71,6 @@ class Community extends Component {
     render() {
         return(
             <div className='journalContainer community'>
-                <section className='filterForm'>
-                    Filter By Month By Year
-                </section>
-                {/* <EntryComp date={date}></EntryComp>
-                <EntryComp date={date}></EntryComp> */}
                 {this.renderEntryComps()}
             </div>
         )

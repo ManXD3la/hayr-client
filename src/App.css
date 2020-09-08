@@ -7,13 +7,13 @@
   background: #F0FED9;
   text-align: center;
   display: grid;
-  grid-template-rows: [header] 1fr [pages] 8fr[footer] 1fr;
+  grid-template-rows: [header] 10vh [pages] 85vh [footer] 5vh;
   place-items: stretch stretch;
   place-content: stretch stretch;
 }
 
 .App main * {
-  font-family: 'Monsterrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .App + * {
@@ -22,6 +22,7 @@
 .App main > * {
   height: 90vh;
   overflow: auto;
+  width: 100vw;
 }
 
 @media (prefers-reduced-motion: no-preference) {
