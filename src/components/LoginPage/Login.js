@@ -27,34 +27,35 @@ class Login extends Component {
     }
 
     displayError () {
-        if (this.state.loginAttempt) {
-            return '...Please enter valid user name and password...'
-        }
         if (this.state.loginAttempt === -1) {
             return '...please wait...'
+        }
+
+        if (this.state.loginAttempt) {
+            return '...Please enter valid user name and password...'
         }
     }
 
     handleLoginButt = (ev) => {
         ev.preventDefault();
         const {userName, password} = ev.target;
-        this.loginAttemptIncrement()        
-
+        
         TokenService.saveAuthToken(
             TokenService.makeBasicAuthToken(userName.value, password.value)
-        );
-        
-        hayrApiService.loginAuth()
-        .then( userInfo => {
-            if (!userInfo.ok) {
-                TokenService.clearAuthToken()
-            }
-            else {    
-                userName.value = '';
-                password.value = '';
-                this.setState({
-                    loginAttempt: -1,
-                    loginSuccess: true
+            );
+            
+            hayrApiService.loginAuth()
+            .then( userInfo => {
+                if (!userInfo.ok) {
+                    TokenService.clearAuthToken()
+                    this.loginAttemptIncrement()        
+                }
+                else {    
+                    userName.value = '';
+                    password.value = '';
+                    this.setState({
+                        loginAttempt: -1,
+                        loginSuccess: true
                 })
             }
             })

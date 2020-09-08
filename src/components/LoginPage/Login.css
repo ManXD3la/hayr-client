@@ -14,7 +14,7 @@
 .loginBox input[type= 'text'], .loginBox input[type='password'] {
     text-align: center;
     border: 2px solid grey;
-    background: #F0FED9 /;
+    background: #F0FED9;
     display: block;
     margin: auto;
     padding: 14px 10px;
