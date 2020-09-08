@@ -1,25 +1,30 @@
 .journalContainer {
-    border: orangered solid 3px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+    align-content: center;
     overflow: auto;
 }
 
 .entryContainer {
-    display: relative;
+    width: 90vw;
+    position: relative;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+    align-content: center;
 }
 
 @media only screen and (min-width: 750px) {
     .entryContainer {
+        /* box-sizing: content-box; */
+        width: 100%;
         display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-    }
-
-    .entryBox {
-        z-index: initial;
+        align-items: center;
+        align-content: center;
+        place-items: center;
+        margin: 10px;
     }
 }

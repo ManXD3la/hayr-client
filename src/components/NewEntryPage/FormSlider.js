@@ -15,7 +15,6 @@ class FormSlider extends Component {
         this.setState({
             value: newValue
         });
-        console.log(this.state.value);
         if (this.props.change === 'energy') {
             this.context.changeEnergy(newValue)
         }

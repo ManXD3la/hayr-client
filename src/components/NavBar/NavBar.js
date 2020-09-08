@@ -34,27 +34,27 @@ class NavBar extends Component {
             return(
             <div className='nav-left-side'>
                 <Link className='app-title' to='/'>HayR</Link>
-                <div className='account-menu'>
+                <span className='account-menu'>
                     <Link className='nav-a' to='/journal/new-entry'>New Entry</Link>
                     <Link className='nav-a' to='/journal'>My Journal</Link>
                     <Link className='nav-a' to='/community'>Community</Link>
-                </div>
+                </span>
             </div>
             )
         }
         else {
             return (
             <div className='nav-left-side'>
-                <Link className='app-title' to='/'>HayR</Link>
+                <Link className='app-title no-account' to='/'>HayR</Link>
             </div>
             )
         }
     }
 
     logInButt() {
-        // show logout button/link, hayr name to show pop up message about app, invite a friend link/dropdown?
+        // show logout button/link
         return(
-            <div className='nav-right-side'>
+            <div className='nav-right-side no-account'>
                 {/* change to react 'scroll into view' funciton/condiiton */}
                 <Link className='nav-a' to='/'> 
                 Sign Up
