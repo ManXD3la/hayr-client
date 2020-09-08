@@ -72,11 +72,12 @@ class Login extends Component {
         return(
             <form className='loginBox' onSubmit={this.handleLoginButt}>
                 <h1>Login</h1>
+                <br />
                 <label htmlFor='userName'></label>
-                <input required type='text' name='userName' id='userName' placeholder='User namE'></input>
+                <input required type='text' name='userName' id='userName' placeholder='User name'></input>
                 <br/>
                 <label htmlFor='password'></label>
-                <input required type='password' name='password' id='password' placeholder='PassworD'></input>
+                <input required type='password' name='password' id='password' placeholder='Password'></input>
                 <br/>
                 <p className='formErrorMessage'>{this.displayError()}</p>
                 <input type='submit' name='login' id='loginButt' value='Login'></input>
