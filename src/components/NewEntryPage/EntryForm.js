@@ -13,7 +13,8 @@ class EntryForm extends Component {
         this.state = {
             reflection:'',
             moodPleasant:127,
-            moodEnergy: 127
+            moodEnergy: 127,
+            shareType: '',
         }
     }
     //create context for 
@@ -35,11 +36,17 @@ class EntryForm extends Component {
         });
     }
 
+    handleShareTypeChange = shareType => {
+        this.setState({
+            shareType: shareType
+        });
+    }
+
     handleSubmit = (ev) => {
         ev.preventDefault();
-        const{ reflection, moodPleasant, moodEnergy } = this.state
+        const{ reflection, moodPleasant, moodEnergy,shareType } = this.state
 
-        hayrApiService.postEntry(reflection, moodPleasant, moodEnergy)
+        hayrApiService.postEntry(reflection, moodPleasant, moodEnergy, shareType)
         .then(entry => {
             this.context.addEntry(entry[0])
             this.props.history.push(`/journal`)
@@ -69,6 +76,11 @@ class EntryForm extends Component {
                     <label htmlFor='myReflection'>My Reflection</label>
                     <textarea className='reflectionText' id='myReflection' onChange={e => this.handleReflectionChange(e.target.value)}
                             placeholder='The breaking day has wisdom, the falling day has experience'></textarea>
+                    <label htmlFor='shareType'>Share with Others?</label>
+                    <select id='shareType' onChange={e => this.handleShareTypeChange(e.target.value)} >
+                        <option value={'private'}>Make Private</option>
+                        <option  value={'public'}>Make Public</option>
+                    </select>
                     <input type='submit' id='submitButt'></input>
                 </form>
             </EntryFormContext.Provider>

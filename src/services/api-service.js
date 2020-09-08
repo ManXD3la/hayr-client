@@ -68,11 +68,12 @@ const hayrApiService = {
     },
 
     // Entries
-    postEntry(reflection, mood_pleasant, mood_energy) {
+    postEntry(reflection, mood_pleasant, mood_energy, entry_share) {
         let reqBody = JSON.stringify({
             reflection: reflection,
             mood_pleasant: mood_pleasant,
-            mood_energy: mood_energy
+            mood_energy: mood_energy,
+            entry_share: entry_share,
         })
 
         return fetch(`${config.API_ENDPOINT}/entry`, {
@@ -145,14 +146,18 @@ const hayrApiService = {
             })
     },
 
-    patchUpdatedEntry(entryId, entryInfoToUpdate) {
-        return fetch(`${config.API_ENDPOINT}/entry`, {
+    patchUpdatedEntry(entryId, entryInfo) {
+        let newShareType = entryInfo
+        
+        console.log('changing to:', newShareType)
+
+        return fetch(`${config.API_ENDPOINT}/entry/${entryId}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
                 'authorization': `basic ${TokenService.getAuthToken()}`,
             },
-            body: entryInfoToUpdate
+            body: JSON.stringify({entry_share: newShareType})
         })
         .then(res => {
             if (!res.ok)
