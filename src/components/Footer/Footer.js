@@ -7,11 +7,11 @@ function Footer() {
     return (
         <footer role='footer-developer-info'>
             <p>App designed by</p>
-            <Link className='portfolio-link'
-                to='https://thinkful-ei-orka.github.io/mandela-portfolio/'
+            <a className='portfolio-link'
+                href='https://thinkful-ei-orka.github.io/mandela-portfolio/'
                 target='_blank'>
             Mandela Jones
-            </Link>
+            </a>
         </footer>
         )
 };

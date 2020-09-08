@@ -23,7 +23,6 @@ class Login extends Component {
             loginAttempt: this.state.loginAttempt + 1
         })
         if (this.state.loginAttempt % 3 === 0) {
-            console.log('Take a chill pill')
         }
     }
 
@@ -39,9 +38,7 @@ class Login extends Component {
     handleLoginButt = (ev) => {
         ev.preventDefault();
         const {userName, password} = ev.target;
-        this.loginAttemptIncrement()
-        console.log(`Login Attempt: ${this.state.loginAttempt}`, `User Name: ${userName.value}`, `Password: ${password.value}`);
-        
+        this.loginAttemptIncrement()        
 
         TokenService.saveAuthToken(
             TokenService.makeBasicAuthToken(userName.value, password.value)
@@ -72,11 +69,12 @@ class Login extends Component {
         return(
             <form className='loginBox' onSubmit={this.handleLoginButt}>
                 <h1>Login</h1>
+                <br />
                 <label htmlFor='userName'></label>
-                <input required type='text' name='userName' id='userName' placeholder='User namE'></input>
+                <input required type='text' name='userName' id='userName' placeholder='User name'></input>
                 <br/>
                 <label htmlFor='password'></label>
-                <input required type='password' name='password' id='password' placeholder='PassworD'></input>
+                <input required type='password' name='password' id='password' placeholder='Password'></input>
                 <br/>
                 <p className='formErrorMessage'>{this.displayError()}</p>
                 <input type='submit' name='login' id='loginButt' value='Login'></input>

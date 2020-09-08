@@ -1,13 +1,8 @@
 .loginBox {
     width: 60vw;
     padding: 40px;
-    position: absolute;
-    border: solid 3px darkblue;
+    position: relative;
     border-radius: 20px;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    background: darkorange;
     text-align: center;
 }
 
@@ -19,7 +14,7 @@
 .loginBox input[type= 'text'], .loginBox input[type='password'] {
     text-align: center;
     border: 2px solid grey;
-    background: white /*none*/;
+    background: #F0FED9 /;
     display: block;
     margin: auto;
     padding: 14px 10px;
@@ -38,7 +33,7 @@
 .loginBox input[type='submit'] {
     text-align: center;
     border: 2px solid grey;
-    background: white /*none*/;
+    background: #F0FED9;
     display: block;
     margin: auto;
     padding: 14px 10px;
@@ -51,5 +46,5 @@
 
 .loginBox input[type='submit']:hover, .loginBox input[type='submit']:focus {
     color: white;
-    background: black;
+    background: #1B2469;
 }

@@ -3,19 +3,16 @@ import {Link} from 'react-router-dom'
 import './EntryComp.css';
 
 function EntryComp(props) {
-    console.log(props.date)
     const moodBorder ={
-        border: `solid 10rem rgb(255,${props.moodPleasant},${props.moodEnergy})`
-    }
+        'border-color': `rgb(${props.moodPleasant},${props.moodEnergy},245)`,
+        }
 
 
 
     return (
-        <Link to={`/${props.path}/${props.id}`}>
-            <div className='entryBox' style={moodBorder}>
-                <div className='entryContent'>
-                    {!props.date? null: props.date}
-                </div>
+        <Link to={`/${props.path}/${props.id}`} className='entryLink' style={moodBorder}>
+            <div>
+            {!props.date? null: props.date}
             </div>
         </Link>
     )
