@@ -4,29 +4,18 @@ nav {
     margin: 0;
     padding: 0;
     position: relative;
+    display: flex;
+    justify-content: flex-end;
     border-bottom-style: inset;
     border-bottom-width: 3px;
     border-bottom-color: teal;
 }
 
-nav > div {
-    /* display: inline; */
-    height: 100%;
-    margin: 0 3px;
-    justify-items: end;
+@media only screen and (min-width: 750px) {
+    nav {
+        padding: 0 2%;
+    }
 }
-
-.nav-left-side {
-    margin-left: 4px;
-    float: left;
-}
-
-.nav-left-side > * {
-    display: block;
-    text-align: left;
-}
-
-
 nav div a, nav div a:visited {
     text-align: center;
     padding: 3px;
@@ -42,10 +31,58 @@ nav div a.app-title:hover,  nav div a.app-title:focus {
     color: #1B2469;
     text-decoration: underline solid #000000;
 }
+nav div a:active{
+    color: #747474;
+}
 .nav-a {
-    font-family: 'Monsterrat', sans-serif;
-    font-size: medium;
+    font-family: 'Montserrat', sans-serif;
+    /* font-size: small; */
+    font-size: .9rem;
     font-weight: 600;
+}
+
+nav > div {
+    /* display: inline; */
+    position: relative;
+    height: 100%;
+    margin: 0 3px;
+    justify-items: end;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.nav-left-side {
+    margin-left: 3px;
+    margin-right: auto;
+    /* float: left; */
+}
+
+.nav-left-side > * {
+    display: block;
+    text-align: left;
+}
+
+.no-account {
+    padding-top: 15px;
+}
+nav div.nav-right-side {
+    position: relative;
+    height: 100%;
+    margin-right: 3px;
+    float: right;
+    padding-top: 42px;
+}
+
+nav div.nav-right-side.no-account {
+    height: 100%;
+    padding-top: 30px;
+}
+
+
+nav .nav-right-side > a {
+    position: relative;
+    text-align: left;
+    vertical-align: bottom;
 }
 
 .app-title {
@@ -56,24 +93,16 @@ nav div a.app-title:hover,  nav div a.app-title:focus {
     
 }
 
-nav div a:active{
-    color: #747474;
-}
-.nav-right-side {
-    margin-right: 4px;
-    float: right;
-}
-
-.nav-right-side > * {
-    position: relative;
-    text-align: left;
-vertical-align: bottom;}
-
 @media only screen and (min-width: 750px) {
-    nav {
-        padding: 0 2%;
+    .nav-a {
+        font-size: large;
     }
+    .nav-left-side {
+        margin-left: 10px;
+    }
+
+    nav div.nav-right-side {
+        margin-right: 10px;
+    }
+
 }
-
-
-
