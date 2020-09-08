@@ -14,7 +14,7 @@ class EntryForm extends Component {
             reflection:'',
             moodPleasant:127,
             moodEnergy: 127,
-            shareType: '',
+            shareType: 'private',
         }
     }
     //create context for 
