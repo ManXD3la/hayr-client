@@ -19,6 +19,11 @@ input::placeholder {
     color: black;
 }
 
+p.formErrorMessage {
+    margin: auto;
+    text-align: center;
+}
+
 @media only screen and (min-width: 750px) {
 
 
