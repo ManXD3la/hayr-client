@@ -1,4 +1,5 @@
 nav {
+    flex-basis: 10vh;
     grid-row: 1;
     width: 100%;
     margin: 0;

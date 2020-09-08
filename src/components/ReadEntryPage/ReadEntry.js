@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Redirect} from 'react-router-dom'
 import AccountContext from '../../contexts/AccountContext'
 import './ReadEntry.css';
 import hayrApiService from '../../services/api-service';
@@ -13,6 +14,7 @@ class ReadEntry extends Component {
     state = {
         entry:{},
         shareType: '',
+        deleteSuccess: '',
     }
 
     
@@ -41,7 +43,15 @@ class ReadEntry extends Component {
         });
     }
 
-    renderShareOptions() {
+    handleDeleteButton = id => {
+        hayrApiService.deleteEntry(id)
+        .then( res => {
+            if (res.ok) {
+                this.setState({deleteSuccess: true});
+            }
+        })
+    }
+    renderShareOptionsAndDelete() {
         let entry = this.state.entry
         if (entry.entry_share==='private') {
             return(
@@ -51,6 +61,7 @@ class ReadEntry extends Component {
                         <option value={'private'}>Keep Private</option>
                         <option  value={'public'}>Make Public</option>
                     </select>
+                    <button type='button' onClick={e => this.handleDeleteButton(entry.id)}>Delete Entry</button>
                 </span>
             )
         }
@@ -63,21 +74,20 @@ class ReadEntry extends Component {
                             <option  value={'public'}>Keep Public</option>
                             <option value={'private'}>Make Private</option>
                         </select>
+                        <button type='button' onClick={e => this.handleDeleteButton(entry.id)}>Delete Entry</button>
                     </span>
             )
         }
         else {
             return (
                 <span className='share-option'>
-                        <p>Community = Sharing</p>
+                        <label  htmlFor='shareType'/>Community = Sharing<label />
                 </span>
             )
         }
     }
 
     render() {
-        // const { journal } = this.context;
-        // const entry = journal.find(entry => entry.id == entryId)
         const entry = this.state.entry
         const moodBorder ={
             border: `solid 10vh rgb(${entry.mood_pleasant},${entry.mood_energy},245)`
@@ -96,8 +106,9 @@ class ReadEntry extends Component {
                     <br/>
                     Reflection:
                     <p>{entry.reflection}</p>
-                    {this.renderShareOptions()}
+                    {this.renderShareOptionsAndDelete()}
                 </div>
+                {this.state.deleteSuccess === true ? <Redirect to='/journal'/> : null }
             </ section>
         )
     }
