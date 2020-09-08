@@ -6,10 +6,18 @@
   overflow: auto;
   background: #F0FED9;
   text-align: center;
-  display: grid;
-  grid-template-rows: [header] 10vh [pages] 85vh [footer] 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: stretch;
+  align-items: stretch;
   place-items: stretch stretch;
   place-content: stretch stretch;
+}
+
+.App main {
+  height: 85vh;
+  align-self: stretch;
 }
 
 .App main * {
@@ -20,9 +28,10 @@
   background-color: #F0FED9;
 }
 .App main > * {
-  height: 90vh;
+  height: 85vh;
+  width: 100%;
   overflow: auto;
-  width: 100vw;
+  /* width: 99vw; */
 }
 
 @media (prefers-reduced-motion: no-preference) {

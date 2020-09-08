@@ -8,9 +8,13 @@ form {
     margin: auto;
   }
   
+  span.MuiSlider-root.MuiSlider-colorPrimary {
+    width: 90%;
+  }
+
   textarea {
     height: 50vh;
-    width: 100%;
+    width: 90%;
     resize: none;
   }
   

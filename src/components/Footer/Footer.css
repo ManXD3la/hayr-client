@@ -1,8 +1,10 @@
 footer {
+    flex-basis: 5vh;
     grid-row: 4;
     bottom: 0;
     background-color: teal;
     flex-shrink: 0;
+    z-index: 1;
 }
 
 footer * {
