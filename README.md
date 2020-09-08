@@ -4,7 +4,7 @@
 
 HayR is an application for online journaling used by companies to create a safe space to share feelings and thoughts. As you become more comfortable with entering a few words about your day or a simple moment as a reflection, you always have the option to reveal them to others anonymously. By sharing a reflection with the HayR community, you can see how others are feeling during that day. When we accept and appreciate all thoughts and feelings that exist, we are able to appreciate the vastness of the human experience like stars in the night sky.
 
-[image] (resources/client-journal-screenshot.png) [image](resources/client-entry-screenshot.png)
+[image](resources/client-journal-screenshot.png) [image](resources/client-entry-screenshot.png)
 
 ### Live Link and Demo Account
 
